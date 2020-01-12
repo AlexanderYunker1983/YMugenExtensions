@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using MugenMvvmToolkit.Collections;
 using YMugenExtensions.Commands;
+#pragma warning disable 108,114
 
 namespace YMugenExtensions.Menu
 {
@@ -24,6 +25,7 @@ namespace YMugenExtensions.Menu
         public SynchronizedNotifiableCollection<IMenuItemViewModel> Items { get; set; } =
             new SynchronizedNotifiableCollection<IMenuItemViewModel>();
     }
+
     public class SubMenuItemViewModel<T>: MenuItemViewModel<T>, ISubMenuItemViewModel
     {
         public SynchronizedNotifiableCollection<IMenuItemViewModel> Items { get; set; } =

@@ -4,33 +4,27 @@ namespace YMugenExtensions.Menu
 {
     public class PopupMenuItemContainerViewModel<T> : ViewModelBase, IHasPopupMenu
     {
-        private T child;
-        private bool popupIsOpen;
+        private T _child;
+        private bool _popupIsOpen;
 
         public T Child
         {
-            get => child;
+            get => _child;
             set
             {
-                if (Equals(value, child))
-                {
-                    return;
-                }
-                child = value;
+                if (Equals(value, _child)) return;
+                _child = value;
                 OnPropertyChanged();
             }
         }
 
         public bool PopupIsOpen
         {
-            get => popupIsOpen;
+            get => _popupIsOpen;
             set
             {
-                if (value == popupIsOpen)
-                {
-                    return;
-                }
-                popupIsOpen = value;
+                if (value == _popupIsOpen) return;
+                _popupIsOpen = value;
                 OnPropertyChanged(nameof(PopupIsOpen));
             }
         }

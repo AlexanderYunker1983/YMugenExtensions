@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Threading.Tasks;
 using MugenMvvmToolkit;
-using MugenMvvmToolkit.Collections;
 using MugenMvvmToolkit.Interfaces.Models;
 using MugenMvvmToolkit.Models;
 using YMugenExtensions.Commands;
@@ -49,25 +48,24 @@ namespace YMugenExtensions.Menu
     public class MenuItemViewModel<T> : NotifyPropertyChangedBase, IMenuItemViewModel
     {
 
-        private IRelayCommand command;
-        private T parameter;
-        private bool isChecked;
-        private SynchronizedNotifiableCollection<IMenuItemViewModel> items;
+        private IRelayCommand _command;
+        private T _parameter;
+        private bool _isChecked;
 
-        private bool isEnabled = true;
-        private bool isSeparator;
-        private bool showAsAction;
-        private bool isVisible = true;
-        private string title;
+        private bool _isEnabled = true;
+        private bool _isSeparator;
+        private bool _showAsAction;
+        private bool _isVisible = true;
+        private string _title;
 
         public bool IsEnabled
         {
-            get => isEnabled;
+            get => _isEnabled;
             set
             {
-                if (!value.Equals(isEnabled))
+                if (!value.Equals(_isEnabled))
                 {
-                    isEnabled = value;
+                    _isEnabled = value;
                     OnPropertyChanged();
                 }
             }
@@ -75,14 +73,11 @@ namespace YMugenExtensions.Menu
 
         public IRelayCommand Command
         {
-            get => command;
+            get => _command;
             set
             {
-                if (Equals(value, command))
-                {
-                    return;
-                }
-                command = value;
+                if (Equals(value, _command)) return;
+                _command = value;
                 OnPropertyChanged();
             }
         }
@@ -99,28 +94,22 @@ namespace YMugenExtensions.Menu
 
         public T Parameter
         {
-            get => parameter;
+            get => _parameter;
             set
             {
-                if (Equals(value, parameter))
-                {
-                    return;
-                }
-                parameter = value;
+                if (Equals(value, _parameter)) return;
+                _parameter = value;
                 OnPropertyChanged();
             }
         }
 
         public string Title
         {
-            get => title;
+            get => _title;
             set
             {
-                if (value == title)
-                {
-                    return;
-                }
-                title = value;
+                if (value == _title) return;
+                _title = value;
                 OnPropertyChanged();
             }
         }
@@ -129,28 +118,22 @@ namespace YMugenExtensions.Menu
 
         public bool IsChecked
         {
-            get => isChecked;
+            get => _isChecked;
             set
             {
-                if (value == isChecked)
-                {
-                    return;
-                }
-                isChecked = value;
+                if (value == _isChecked) return;
+                _isChecked = value;
                 OnPropertyChanged();
             }
         }
 
         public bool IsSeparator
         {
-            get => isSeparator;
+            get => _isSeparator;
             set
             {
-                if (value == isSeparator)
-                {
-                    return;
-                }
-                isSeparator = value;
+                if (value == _isSeparator) return;
+                _isSeparator = value;
                 OnPropertyChanged();
             }
         }
@@ -160,14 +143,11 @@ namespace YMugenExtensions.Menu
         /// </summary>
         public bool ShowAsAction
         {
-            get => showAsAction;
+            get => _showAsAction;
             set
             {
-                if (value == showAsAction)
-                {
-                    return;
-                }
-                showAsAction = value;
+                if (value == _showAsAction) return;
+                _showAsAction = value;
                 OnPropertyChanged();
             }
         }
@@ -177,14 +157,11 @@ namespace YMugenExtensions.Menu
         /// </summary>
         public bool IsVisible
         {
-            get => isVisible;
+            get => _isVisible;
             set
             {
-                if (value == isVisible)
-                {
-                    return;
-                }
-                isVisible = value;
+                if (value == _isVisible) return;
+                _isVisible = value;
                 OnPropertyChanged();
             }
         }

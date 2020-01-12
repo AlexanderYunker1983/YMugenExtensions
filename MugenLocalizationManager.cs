@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Text;
 using JetBrains.Annotations;
@@ -14,6 +13,7 @@ using YLocalization;
 
 namespace YMugenExtensions
 {
+    [UsedImplicitly]
     public class MugenLocalizationManager : LocalizationManager, IDynamicObject, INotifyPropertyChanged
     {
         private const string ResourceName = "i18n";
@@ -30,16 +30,13 @@ namespace YMugenExtensions
         private string TimeToKindString(IList<Type> arg1, object[] arg2, IDataContext arg3)
         {
             var allSecs = (uint)arg2[0];
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             var currentIndex = 0;
             var lastRound = allSecs;
             while (true)
             {
-                if (currentIndex == TimeKindKeys.Length || lastRound == 0)
-                {
-                    break;
-                }
+                if (currentIndex == TimeKindKeys.Length || lastRound == 0) break;
                 var round = lastRound / 60;
 
                 if (round > 0)
